@@ -3,7 +3,7 @@ import { useLocation, Link, useNavigate } from "react-router-dom";
 import { GROUPID, IMAGES_DOMAIN, callApi } from "../../services/Api";
 import { Button, Menu, Drawer, Empty, Badge } from "antd";
 import { useGlobalState } from "../../hooks";
-import { addMenu, addNews, addSetting } from "../../store";
+import { addMenu, addSetting } from "../../store";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -11,144 +11,144 @@ export const Header = () => {
   const [globalState, dispatch] = useGlobalState();
   const [current, setCurrent] = useState("mail");
   const [openMenuMobile, setOpenMenuMobile] = useState(false);
-  useEffect(() => {
-    Shop_spWeb_Menu_List();
-    Shop_spWeb_Setting_List();
-    Shop_spWeb_News_List();
-  }, []);
+  // useEffect(() => {
+  //   Shop_spWeb_Menu_List();
+  //   Shop_spWeb_Setting_List();
+  //   Shop_spWeb_News_List();
+  // }, []);
 
-  const Shop_spWeb_News_List = async () => {
-    const pr = {
-      Domain: "",
-      GroupId: GROUPID,
-    };
-    const params = {
-      Json: JSON.stringify(pr),
-      func: "Shop_spWeb_News_List",
-    };
-    try {
-      const result = await callApi.Main(params);
-      result?.length && result?.length > 0 && dispatch(addNews(result));
-    } catch (err) {}
-  };
-  //#region danh sách menu độngt
-  const Shop_spWeb_Menu_List = async () => {
-    const pr = {
-      Domain: "",
-      GroupId: GROUPID,
-      keylang: localStorage.getItem("keyLang"),
-    };
-    const params = {
-      Json: JSON.stringify(pr),
-      func: "Shop_spWeb_Menu_List",
-    };
-    try {
-      const result = await callApi.Main(params);
-      result?.length && result?.length > 0 && dispatch(addMenu(result));
-      // setDataMenu(result);
-    } catch (err) {}
-  };
+  // const Shop_spWeb_News_List = async () => {
+  //   const pr = {
+  //     Domain: "",
+  //     GroupId: GROUPID,
+  //   };
+  //   const params = {
+  //     Json: JSON.stringify(pr),
+  //     func: "Shop_spWeb_News_List",
+  //   };
+  //   try {
+  //     const result = await callApi.Main(params);
+  //     // result?.length && result?.length > 0 && dispatch(addNews(result));
+  //   } catch (err) {}
+  // };
+  // //#region danh sách menu độngt
+  // const Shop_spWeb_Menu_List = async () => {
+  //   const pr = {
+  //     Domain: "",
+  //     GroupId: GROUPID,
+  //     keylang: localStorage.getItem("keyLang"),
+  //   };
+  //   const params = {
+  //     Json: JSON.stringify(pr),
+  //     func: "Shop_spWeb_Menu_List",
+  //   };
+  //   try {
+  //     const result = await callApi.Main(params);
+  //     result?.length && result?.length > 0 && dispatch(addMenu(result));
+  //     // setDataMenu(result);
+  //   } catch (err) {}
+  // };
   //#endregion
 
-  const Shop_spWeb_Setting_List = async () => {
-    const pr2 = {
-      Domain: "",
-      GroupId: GROUPID,
-    };
-    const params2 = {
-      Json: JSON.stringify(pr2),
-      func: "Shop_spWeb_Setting_List",
-    };
-    try {
-      const result2 = await callApi.Main(params2);
-      let Logo =
-        IMAGES_DOMAIN +
-        result2
-          .find((e) => e.KeySetting === "Logo")
-          .DataSetting.replace(",", "");
+  // const Shop_spWeb_Setting_List = async () => {
+  //   const pr2 = {
+  //     Domain: "",
+  //     GroupId: GROUPID,
+  //   };
+  //   const params2 = {
+  //     Json: JSON.stringify(pr2),
+  //     func: "Shop_spWeb_Setting_List",
+  //   };
+  //   try {
+  //     const result2 = await callApi.Main(params2);
+  //     let Logo =
+  //       IMAGES_DOMAIN +
+  //       result2
+  //         .find((e) => e.KeySetting === "Logo")
+  //         .DataSetting.replace(",", "");
 
-      let Hotline = result2.find(
-        (e) => e.KeySetting === "Hotline"
-      )?.DataSetting;
-      let Email = result2.find((e) => e.KeySetting === "Email")?.DataSetting;
-      let Slogan = result2.find((e) => e.KeySetting === "Slogan")?.DataSetting;
-      let Map = result2.find((e) => e.KeySetting === "Map")?.DataSetting;
-      let TermsAndConditions = result2.find(
-        (e) => e.KeySetting === "TermsAndConditions"
-      )?.DataSetting;
-      let PrivacyPolicy = result2.find(
-        (e) => e.KeySetting === "PrivacyPolicy"
-      )?.DataSetting;
-      let Hero1 =
-        IMAGES_DOMAIN +
-        result2
-          .find((e) => e.KeySetting === "Hero1")
-          ?.DataSetting.replace(",", "");
-      let Hero2 =
-        IMAGES_DOMAIN +
-        result2
-          .find((e) => e.KeySetting === "Hero2")
-          ?.DataSetting.replace(",", "");
-      let Hero3 =
-        IMAGES_DOMAIN +
-        result2
-          .find((e) => e.KeySetting === "Hero3")
-          ?.DataSetting.replace(",", "");
-      let Hero4 =
-        IMAGES_DOMAIN +
-        result2
-          .find((e) => e.KeySetting === "Hero4")
-          ?.DataSetting.replace(",", "");
-      let Hero5 =
-        IMAGES_DOMAIN +
-        result2
-          .find((e) => e.KeySetting === "Hero5")
-          ?.DataSetting.replace(",", "");
-      let Hero6 =
-        IMAGES_DOMAIN +
-        result2
-          .find((e) => e.KeySetting === "Hero6")
-          ?.DataSetting.replace(",", "");
-      let Contentproduction = result2.find(
-        (e) => e.KeySetting === "Contentproduction"
-      );
+  //     let Hotline = result2.find(
+  //       (e) => e.KeySetting === "Hotline"
+  //     )?.DataSetting;
+  //     let Email = result2.find((e) => e.KeySetting === "Email")?.DataSetting;
+  //     let Slogan = result2.find((e) => e.KeySetting === "Slogan")?.DataSetting;
+  //     let Map = result2.find((e) => e.KeySetting === "Map")?.DataSetting;
+  //     let TermsAndConditions = result2.find(
+  //       (e) => e.KeySetting === "TermsAndConditions"
+  //     )?.DataSetting;
+  //     let PrivacyPolicy = result2.find(
+  //       (e) => e.KeySetting === "PrivacyPolicy"
+  //     )?.DataSetting;
+  //     let Hero1 =
+  //       IMAGES_DOMAIN +
+  //       result2
+  //         .find((e) => e.KeySetting === "Hero1")
+  //         ?.DataSetting.replace(",", "");
+  //     let Hero2 =
+  //       IMAGES_DOMAIN +
+  //       result2
+  //         .find((e) => e.KeySetting === "Hero2")
+  //         ?.DataSetting.replace(",", "");
+  //     let Hero3 =
+  //       IMAGES_DOMAIN +
+  //       result2
+  //         .find((e) => e.KeySetting === "Hero3")
+  //         ?.DataSetting.replace(",", "");
+  //     let Hero4 =
+  //       IMAGES_DOMAIN +
+  //       result2
+  //         .find((e) => e.KeySetting === "Hero4")
+  //         ?.DataSetting.replace(",", "");
+  //     let Hero5 =
+  //       IMAGES_DOMAIN +
+  //       result2
+  //         .find((e) => e.KeySetting === "Hero5")
+  //         ?.DataSetting.replace(",", "");
+  //     let Hero6 =
+  //       IMAGES_DOMAIN +
+  //       result2
+  //         .find((e) => e.KeySetting === "Hero6")
+  //         ?.DataSetting.replace(",", "");
+  //     let Contentproduction = result2.find(
+  //       (e) => e.KeySetting === "Contentproduction"
+  //     );
 
-      let Address = result2.find(
-        (e) => e.KeySetting === "Address"
-      )?.DataSetting;
-      let AboutCompany = result2.find(
-        (e) => e.KeySetting === "AboutCompany"
-      )?.DataSetting;
+  //     let Address = result2.find(
+  //       (e) => e.KeySetting === "Address"
+  //     )?.DataSetting;
+  //     let AboutCompany = result2.find(
+  //       (e) => e.KeySetting === "AboutCompany"
+  //     )?.DataSetting;
 
-      let ImageABoutUs =
-        IMAGES_DOMAIN +
-        result2
-          .find((e) => e.KeySetting === "ImageABoutUs")
-          ?.DataSetting.replace(",", "");
-      let data = {
-        Logo,
-        Email,
-        Slogan,
-        Hotline,
-        AboutCompany,
-        ImageABoutUs,
-        Map,
-        Contentproduction,
-        Address,
-        Hero1,
-        Hero2,
-        Hero3,
-        Hero4,
-        Hero5,
-        Hero6,
-        PrivacyPolicy,
-        TermsAndConditions,
-      };
-      dispatch(addSetting(data));
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //     let ImageABoutUs =
+  //       IMAGES_DOMAIN +
+  //       result2
+  //         .find((e) => e.KeySetting === "ImageABoutUs")
+  //         ?.DataSetting.replace(",", "");
+  //     let data = {
+  //       Logo,
+  //       Email,
+  //       Slogan,
+  //       Hotline,
+  //       AboutCompany,
+  //       ImageABoutUs,
+  //       Map,
+  //       Contentproduction,
+  //       Address,
+  //       Hero1,
+  //       Hero2,
+  //       Hero3,
+  //       Hero4,
+  //       Hero5,
+  //       Hero6,
+  //       PrivacyPolicy,
+  //       TermsAndConditions,
+  //     };
+  //     dispatch(addSetting(data));
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
   const RenderMenu = () => {
     return globalState.menu.map((x) => {
       return (

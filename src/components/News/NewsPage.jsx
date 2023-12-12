@@ -9,43 +9,43 @@ export const NewsPage = ({ isHome = false }) => {
   const [globalState, dispatch] = useGlobalState();
   const { news } = globalState;
 
-  const RenderNew = () => {
-    return news
-      .filter((x) => x.Url === "/tin-tuc")
-      .slice(0, isHome ? 3 : 10000)
-      .map((x) => {
-        return (
-          <article
-            class="overflow-hidden rounded-lg shadow transition hover:shadow-lg"
-            key={x.NewsId}
-          >
-            <Link className="" to={`/tin-tuc/${x.UrlDetail}`}>
-              <img
-                alt={x.NewsTitle}
-                src={x.ImageNewsShow}
-                class="h-56 w-full object-cover"
-              />
-            </Link>
+  // const RenderNew = () => {
+  //   return news
+  //     .filter((x) => x.Url === "/tin-tuc")
+  //     .slice(0, isHome ? 3 : 10000)
+  //     .map((x) => {
+  //       return (
+  //         <article
+  //           class="overflow-hidden rounded-lg shadow transition hover:shadow-lg"
+  //           key={x.NewsId}
+  //         >
+  //           <Link className="" to={`/tin-tuc/${x.UrlDetail}`}>
+  //             <img
+  //               alt={x.NewsTitle}
+  //               src={x.ImageNewsShow}
+  //               class="h-56 w-full object-cover"
+  //             />
+  //           </Link>
 
-            <div class="bg-white p-4 sm:p-6">
-              <time datetime="2022-10-10" class="block text-xs text-gray-500">
-                {FormatDateJsonPro(x.CreateOn)}
-              </time>
+  //           <div class="bg-white p-4 sm:p-6">
+  //             <time datetime="2022-10-10" class="block text-xs text-gray-500">
+  //               {FormatDateJsonPro(x.CreateOn)}
+  //             </time>
 
-              <Link className="" to={`/tin-tuc/${x.UrlDetail}`}>
-                <h3 class="mt-0.5 text-lg text-gray-900 line-clamp-2">
-                  {x.NewsTitle}
-                </h3>
-              </Link>
+  //             <Link className="" to={`/tin-tuc/${x.UrlDetail}`}>
+  //               <h3 class="mt-0.5 text-lg text-gray-900 line-clamp-2">
+  //                 {x.NewsTitle}
+  //               </h3>
+  //             </Link>
 
-              <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 ">
-                {x.NewsDescription}
-              </p>
-            </div>
-          </article>
-        );
-      });
-  };
+  //             <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 ">
+  //               {x.NewsDescription}
+  //             </p>
+  //           </div>
+  //         </article>
+  //       );
+  //     });
+  // };
 
   return (
     <div class="container py-5 mx-auto px-4 md:px-0">
@@ -81,7 +81,7 @@ export const NewsPage = ({ isHome = false }) => {
       )}
 
       <div className="grid md:grid-cols-3 gap-4 mt-5">
-        <RenderNew />
+        {/* <RenderNew /> */}
       </div>
     </div>
   );
