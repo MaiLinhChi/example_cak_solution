@@ -36,18 +36,16 @@ const TodoItem = ({data, onEditTodo, onDeleteTodo, dispatch}) => {
                     />
                     <label htmlFor={`check-${index}`} className={`block w-10 h-10 ${todo.checked ? "bg-checked" : "bg-check"}`}></label>
                 </div>
-                <div className='relative w-full h-full p-4'>
+                <div className='relative w-full h-full'>
                     <div
                         suppressContentEditableWarning={true}
                         contentEditable="true"
-                        className={`${todo.checked && "line-through"} p-2 focus:shadow-item focus:border-0 top-0 left-0 w-full h-full flex items-center absolute z-10`}
+                        className={`text ${todo.checked && "line-through"} py-4 px-5 text-focus:group-hover:invisible focus:border-0 top-0 left-0 w-full h-full flex items-center break-all`}
                         onKeyPress={(e) => onEditTodo(e, index)}
                     >
                         {todo.value}
                     </div>
-                    <div className='ml-auto right-0 invisible group-hover:visible float-right'>
-                        <CloseOutlined onClick={(e) => onDeleteTodo(index)}  />
-                    </div>
+                    <CloseOutlined onClick={(e) => onDeleteTodo(index)} className='ml-auto right-0 invisible group-hover:visible float-right absolute top-2/4 -translate-y-1/2 -translate-x-2' style={{ color: "#fecaca" }} />
                 </div>
             </li>
         ))}
