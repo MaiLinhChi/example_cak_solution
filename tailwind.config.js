@@ -6,6 +6,10 @@ export default {
       colors: {
         main: "#0066bf",
       },
+      backgroundImage: {
+        check: "url('/check.svg')",
+        checked: "url('/checked.svg')",
+      },
     },
     container: {
       center: true,
@@ -15,6 +19,11 @@ export default {
         lg: "984px",
         xl: "1140px",
       },
+    },
+  },
+  variants: {
+    extend: {
+      visibility: ["group-hover"],
     },
   },
   plugins: [],
