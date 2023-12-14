@@ -10,8 +10,8 @@ export const MainRouter = () => {
     <BrowserRouter>
       <Wrapper>
         <Routes>
-          <Route path="/" element={<Homes />} />
-          <Route path="/todolist" element={<TodoList />} />
+          {/* <Route path="/" element={<Homes />} /> */}
+          <Route path="/" element={<TodoList />} />
         </Routes>
       </Wrapper>
     </BrowserRouter>
